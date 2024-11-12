@@ -15,14 +15,14 @@ public class adminDemo {
 //        System.out.println("adminClient:"+ adminClient);
 //        createTopic();
         viewTopics();
-        deleteTopics();
-        viewTopics();
+//        deleteTopics();
+//        viewTopics();
     }
 
     //客户端
     public static AdminClient adminClient() {
         Properties properties = new Properties();
-        properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "165.154.104.175:9092");
+        properties.setProperty(AdminClientConfig.BOOTSTRAP_SERVERS_CONFIG, "116.205.168.85:9092");
         AdminClient adminClient = AdminClient.create(properties);
         return adminClient;
     }
@@ -42,8 +42,9 @@ public class adminDemo {
         AdminClient adminClient = adminClient();
         ListTopicsOptions listTopicsOptions = new ListTopicsOptions();
         listTopicsOptions.listInternal(true);
-
-
+//        listTopicsOptions.timeoutMs(10000);
+//
+//
         ListTopicsResult listTopicsResult = adminClient.listTopics(listTopicsOptions);
 //        ListTopicsResult listTopicsResult = adminClient.listTopics();
         Set<String> strings = listTopicsResult.names().get();
